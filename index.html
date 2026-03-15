@@ -519,7 +519,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
     <button class="nav-link" onclick="showView('trabajos',this)"><div class="nav-icon">📋</div>Trabajos<span class="nav-badge" id="badge-trabajos">0</span></button>
   </nav>
 
-  <div class="sidebar-footer">Santiago Ignacio Garnica<br>FHyCS · UNJu · 2025</div>
+  <div class="sidebar-footer">Santiago Ignacio Garnica<br>FHyCS · UNJu · 2026</div>
 </aside>
 
 <!-- MAIN -->
@@ -668,7 +668,7 @@ let data = {
       titulo: "Programa — Problemática Filosófica 2026",
       pdf: "https://drive.google.com/file/d/1j9ThIhev_L-dc2KWck2Qc3rlyRNLl8aS/view?usp=sharing",
       pdfDescarga: "https://drive.google.com/uc?export=download&id=1j9ThIhev_L-dc2KWck2Qc3rlyRNLl8aS",
-      fecha: "2026-01-01",
+      fecha: "2026-03-14",
       fuente: "Cátedra 2026",
       subcategoria: "Programas",
       descripcion: "Programa oficial de la materia Problemática Filosófica para el ciclo lectivo 2026."
@@ -836,7 +836,12 @@ function escA(s){return(s||'').replace(/"/g,'&quot;');}
 // ── BÚSQUEDA ──────────────────────────────────────────────
 document.getElementById('searchInput').addEventListener('input', function() {
   const q = this.value.trim().toLowerCase();
-  if (!q) { renderAll(); return; }
+  if (!q) {
+    const section = document.querySelector('.section-head h2');
+    if (section) section.textContent = 'Reciente';
+    renderAll();
+    return;
+  }
 
   const match = item =>
     (item.titulo||'').toLowerCase().includes(q) ||
@@ -916,9 +921,4 @@ renderAll();
     </div>
     <div class="rick-contact-item">
       <div class="rick-contact-icon">✉</div>
-      <a href="mailto:santy.nalcho1@gmail.com">santy.nalcho1@gmail.com</a>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+      <a href="/cdn-cgi/l/email-protection#4132202f35386f2f202d22292e7001262c20282d6f222e2c"><span class="__cf_email_
