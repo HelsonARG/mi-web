@@ -736,7 +736,7 @@ function renderRecent(){
 
 function renderClases(filter='Todas'){
   const grid=document.getElementById('gridClases');
-  const items=filter==='Todas'?data.clases:data.clases.filter(c=>c.materia===filter);
+  const items=(filter==='Todas'?data.clases:data.clases.filter(c=>c.materia===filter)).slice().sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">▶</div><h3>Sin clases aún</h3><p>Editá el index.html para agregar clases.</p></div>';return;}
   grid.innerHTML=items.map(c=>{
     const id=getYTId(c.url);const thumb=id?ytThumb(id):'';const embed=id?ytEmbed(id):c.url;const click=embed?`openLb('${esc(c.titulo)}','${embed}')`:'' ;
@@ -763,7 +763,7 @@ function renderClases(filter='Todas'){
 
 function renderApuntes(filter='Todas'){
   const grid=document.getElementById('gridApuntes');
-  const items=filter==='Todas'?data.apuntes:data.apuntes.filter(a=>a.materia===filter);
+  const items=(filter==='Todas'?data.apuntes:data.apuntes.filter(a=>a.materia===filter)).slice().sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">📝</div><h3>Sin apuntes aún</h3><p>Editá el index.html para agregar apuntes.</p></div>';return;}
   grid.innerHTML=items.map(a=>{
     const embed=a.url?docsEmbed(a.url):null;
@@ -793,7 +793,7 @@ function renderApuntes(filter='Todas'){
 
 function renderTrabajos(filter='Todas'){
   const grid=document.getElementById('gridTrabajos');
-  const items=filter==='Todas'?data.trabajos:data.trabajos.filter(t=>t.materia===filter);
+  const items=(filter==='Todas'?data.trabajos:data.trabajos.filter(t=>t.materia===filter)).slice().sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">📋</div><h3>Sin trabajos aún</h3><p>Editá el index.html para agregar trabajos.</p></div>';return;}
   const sm={entregado:'ts-entregado',pendiente:'ts-pendiente',en_proceso:'ts-proceso'};
   const sl={entregado:'✓ Entregado',pendiente:'⏳ Pendiente',en_proceso:'✏ En proceso'};
