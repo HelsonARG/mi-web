@@ -637,7 +637,15 @@ let data = {
   //   descripcion: "Temas de la clase"
   // },
   clases: [
-
+    {
+      id: 1,
+      materia: "General",
+      titulo: "Mesa Virtual de Consultas — Tutorías Ciencias de la Educación",
+      url: "https://www.youtube.com/watch?v=k-FL3TfRRlw",
+      fecha: "2026-03-16",
+      duracion: "",
+      descripcion: "Mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS."
+    },
   ],
 
   // ── APUNTES ─────────────────────────
@@ -695,7 +703,7 @@ let data = {
 };
 // ════════════════════════════════════════
 
-function getYTId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([A-Za-z0-9_-]{11})/);return m?m[1]:null;}
+function getYTId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);return m?m[1]:null;}
 function ytThumb(id){return'https://img.youtube.com/vi/'+id+'/hqdefault.jpg';}
 function ytEmbed(id){return'https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';}
 function docsEmbed(url){if(!url)return null;if(url.includes('/preview'))return url;return url.replace(/\/edit.*$/,'').replace(/\/view.*$/,'')+'/preview';}
@@ -921,4 +929,7 @@ renderAll();
     </div>
     <div class="rick-contact-item">
       <div class="rick-contact-icon">✉</div>
-      <a href="/cdn-cgi/l/email-protection#4132202f35386f2f202d22292e7001262c20282d6f222e2c"><span class="__cf_email_
+      <a href="mailto:santy.nalcho1@gmail.com" target="_blank" rel="noopener">santy.nalcho1@gmail.com</a>
+    </div>
+  </div>
+</div>
