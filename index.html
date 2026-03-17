@@ -681,6 +681,15 @@ let data = {
       subcategoria: "Programas",
       descripcion: "Programa oficial de la materia Problemática Filosófica para el ciclo lectivo 2026."
     },
+    {
+      id: 3,
+      materia: "General",
+      titulo: "Mesa Virtual de Consultas — Tutorías Ciencias de la Educación",
+      url: "https://docs.google.com/document/d/1Fiq2upcYNYdpxO9f1_3ncPlZdSHrxqi_vAzX9F8bDcU/edit?usp=sharing",
+      fecha: "2026-03-16",
+      fuente: "Equipo de Tutorías FHyCS — 16 de marzo de 2026",
+      descripcion: "Resumen de la mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS."
+    },
 
   ],
 
@@ -735,7 +744,7 @@ function renderStats(){
 
 function renderRecent(){
   const all=[...data.clases.map(c=>({...c,tipo:'clases'})),...data.apuntes.map(a=>({...a,tipo:'apuntes'})),...data.trabajos.map(t=>({...t,tipo:'trabajos'}))]
-    .sort((a,b)=>new Date(b.fecha)-new Date(a.fecha)).slice(0,6);
+    .sort((a,b)=>new Date(b.fecha)-new Date(a.fecha)).slice(0,2);
   const grid=document.getElementById('recentGrid');
   if(!all.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">✨</div><h3>Todavía no hay contenido</h3><p>Editá el index.html para agregar contenido.</p></div>';return;}
   const lbl={clases:'Clase',apuntes:'Apunte',trabajos:'Trabajo'};
@@ -929,7 +938,4 @@ renderAll();
     </div>
     <div class="rick-contact-item">
       <div class="rick-contact-icon">✉</div>
-      <a href="mailto:santy.nalcho1@gmail.com" target="_blank" rel="noopener">santy.nalcho1@gmail.com</a>
-    </div>
-  </div>
-</div>
+      <a href="/cdn-cgi/l/email-protection#a4d7c5cad0dd8acac5c8c7cccb95e4c3c9c5cdc88ac7cbc9" target="_blank" rel="noopener"><span cla
