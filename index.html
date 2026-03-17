@@ -689,7 +689,8 @@ let data = {
       url: "https://docs.google.com/document/d/1Fiq2upcYNYdpxO9f1_3ncPlZdSHrxqi_vAzX9F8bDcU/edit?usp=sharing",
       fecha: "2026-03-16",
       fuente: "Equipo de Tutorías FHyCS — 16 de marzo de 2026",
-      descripcion: "Resumen de la mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS."
+      descripcion: "Resumen de la mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS.",
+      claseId: 1
     },
 
   ],
@@ -740,6 +741,15 @@ function goToResumen(apunteId){
   },150);
 }
 
+function goToClase(claseId){
+  const btn=document.querySelector('.nav-link[onclick*="clases"]');
+  if(btn)showView('clases',btn);
+  setTimeout(()=>{
+    const el=document.getElementById('clase-'+claseId);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='2px solid var(--pink)';setTimeout(()=>{el.style.outline='';},2000);}
+  },150);
+}
+
 function renderAll(){renderStats();renderRecent();renderClases();renderApuntes();renderTrabajos();updateBadges();updateFilters();}
 
 function updateBadges(){['clases','apuntes','trabajos'].forEach(k=>document.getElementById('badge-'+k).textContent=data[k].length);}
@@ -767,7 +777,7 @@ function renderClases(filter='Todas'){
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">▶</div><h3>Sin clases aún</h3><p>Editá el index.html para agregar clases.</p></div>';return;}
   grid.innerHTML=items.map(c=>{
     const id=getYTId(c.url);const thumb=id?ytThumb(id):'';const embed=id?ytEmbed(id):c.url;const click=embed?`openLb('${esc(c.titulo)}','${embed}')`:'' ;
-    return`<div class="clase-card">
+    return`<div class="clase-card" id="clase-${c.id}">
       <div class="yt-thumb" ${click?`onclick="${click}"`:''} style="${!click?'cursor:default':''}">
         ${thumb?`<img src="${thumb}" alt="${escA(c.titulo)}" loading="lazy">`:`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:0.78rem">Sin previsualización</div>`}
         ${click?`<div class="yt-play-overlay"><div class="yt-play-btn">▶</div></div>`:''}
@@ -812,7 +822,7 @@ function renderApuntes(filter='Todas'){
             ${a.url?`<a class="btn-outline" href="${a.url}" target="_blank" rel="noopener">↗ Abrir</a>`:''}
             ${a.pdfDescarga?`<a class="btn-outline" href="${a.pdfDescarga}" target="_blank" rel="noopener">⬇ Descargar</a>`:''}
             ${a.fotos?`<a class="btn-fotos" href="${a.fotos}" target="_blank" rel="noopener">📷 Ver fotos</a>`:''}
-          </div>
+            ${a.claseId?`<button class="btn-yt" onclick="goToClase(${a.claseId})">▶ Ver clase</button>`:''}          </div>
         </div>
       </div>
     </div>`;
