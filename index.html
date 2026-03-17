@@ -644,7 +644,8 @@ let data = {
       url: "https://www.youtube.com/watch?v=k-FL3TfRRlw",
       fecha: "2026-03-16",
       duracion: "",
-      descripcion: "Mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS."
+      descripcion: "Mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS.",
+      resumenId: 3
     },
   ],
 
@@ -730,6 +731,15 @@ function openLb(title,url){document.getElementById('lbTitle').textContent=title;
 function closeLb(){document.getElementById('lightbox').classList.remove('open');document.getElementById('lbFrame').src='';}
 function closeLbOutside(e){if(e.target===document.getElementById('lightbox'))closeLb();}
 
+function goToResumen(apunteId){
+  const btn=document.querySelector('.nav-link[onclick*="apuntes"]');
+  if(btn)showView('apuntes',btn);
+  setTimeout(()=>{
+    const el=document.getElementById('apunte-'+apunteId);
+    if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='2px solid var(--accent2)';setTimeout(()=>{el.style.outline='';},2000);}
+  },150);
+}
+
 function renderAll(){renderStats();renderRecent();renderClases();renderApuntes();renderTrabajos();updateBadges();updateFilters();}
 
 function updateBadges(){['clases','apuntes','trabajos'].forEach(k=>document.getElementById('badge-'+k).textContent=data[k].length);}
@@ -771,6 +781,7 @@ function renderClases(filter='Todas'){
           <div style="display:flex;gap:6px">
             ${click?`<button class="btn-yt" onclick="${click}">▶ Ver</button>`:''}
             ${c.url?`<a class="btn-outline" href="${c.url}" target="_blank" rel="noopener">↗ YT</a>`:''}
+            ${c.resumenId?`<button class="btn-docs" onclick="goToResumen(${c.resumenId})">📝 Resumen</button>`:''}
           </div>
         </div>
       </div>
@@ -784,7 +795,7 @@ function renderApuntes(filter='Todas'){
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">📝</div><h3>Sin apuntes aún</h3><p>Editá el index.html para agregar apuntes.</p></div>';return;}
   grid.innerHTML=items.map(a=>{
     const embed=a.url?docsEmbed(a.url):null;
-    return`<div class="apunte-card">
+    return`<div class="apunte-card" id="apunte-${a.id}">
       <div class="apunte-card-top"><div class="apunte-lines"></div><div class="apunte-preview">${a.descripcion||'Apunte de '+a.materia}</div></div>
       <div class="apunte-card-body">
         <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px">
