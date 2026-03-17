@@ -491,6 +491,75 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .rick-contact-icon { width: 27px; height: 27px; border-radius: 7px; background: rgba(25,118,210,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; }
 .rick-contact-item a { color: var(--text2); text-decoration: none; transition: color 0.15s; }
 .rick-contact-item a:hover { color: var(--accent); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  /* Sidebar → barra de navegación inferior */
+  .sidebar {
+    width: 100%; min-width: unset;
+    height: 64px; top: auto; bottom: 0; left: 0;
+    flex-direction: row; overflow: visible;
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.2);
+    z-index: 300;
+  }
+  .sidebar-header, .sidebar-footer, .nav-section-label { display: none; }
+  .sidebar-nav {
+    display: flex; flex-direction: row;
+    justify-content: space-around; align-items: center;
+    padding: 0; flex: 1; height: 64px;
+  }
+  .nav-link {
+    flex-direction: column; gap: 2px;
+    padding: 8px 4px; font-size: 0.62rem;
+    border-radius: 10px; text-align: center;
+    width: auto; flex: 1; justify-content: center;
+    margin-bottom: 0;
+  }
+  .nav-icon { width: 26px; height: 26px; font-size: 0.85rem; }
+  .nav-badge { display: none; }
+
+  /* Main sin margen lateral, con padding inferior para la nav */
+  .main { margin-left: 0; padding-bottom: 64px; }
+
+  /* Topbar más compacto */
+  .topbar { padding: 10px 16px; }
+  .topbar-search { width: 150px; padding: 6px 10px; }
+
+  /* Vistas */
+  .view { padding: 16px; }
+
+  /* Banner hero más compacto */
+  .welcome-banner { padding: 24px 20px; margin-bottom: 16px; }
+  .welcome-banner h1 { font-size: 1.6rem; }
+  .welcome-banner p { font-size: 0.82rem; }
+
+  /* Stat cards en 2x2 */
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-card { padding: 14px; }
+  .stat-card-value { font-size: 1.6rem; }
+
+  /* Tarjetas recientes en 1 columna */
+  .recent-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Cards grid en 1 columna */
+  .cards-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  /* Rick badge más pequeño y arriba de la nav */
+  .rick-badge { bottom: 72px; right: 12px; }
+  .rick-avatar { width: 60px; height: 60px; }
+  .rick-contact { width: 190px; bottom: 72px; }
+
+  /* Lightbox full screen */
+  .lightbox-inner {
+    width: 100%; height: 100%;
+    border-radius: 0; margin: 0;
+  }
+  .lightbox-body iframe { min-height: 240px; }
+
+  /* Filter tabs scrollable */
+  .filter-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
+  .filter-tab { white-space: nowrap; flex-shrink: 0; }
+}
 </style>
 </head>
 <body>
