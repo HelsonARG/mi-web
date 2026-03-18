@@ -128,7 +128,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 /* ─── CLASE CARD ─── */
 .clase-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.22s; box-shadow: 0 1px 6px rgba(25,118,210,0.07); }
 .clase-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: var(--shadow); }
-.yt-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #e3ecf5; cursor: pointer; overflow: hidden; }
+.yt-thumb { display: block; position: relative; width: 100%; aspect-ratio: 16/9; background: #e3ecf5; overflow: hidden; text-decoration: none; }
 .yt-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s; }
 .clase-card:hover .yt-thumb img { transform: scale(1.04); }
 .yt-play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(to top, rgba(13,47,91,0.6) 0%, transparent 55%); }
@@ -189,17 +189,7 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 .badge-trabajos { background: rgba(25,118,210,0.1); color: var(--accent); border: 1px solid rgba(25,118,210,0.2); }
 .card-goto { font-size: 0.68rem; color: var(--accent); margin-top: 6px; font-weight: 600; }
 
-/* ─── LIGHTBOX ─── */
-.lightbox { position: fixed; inset: 0; z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(10,25,47,0.88); backdrop-filter: blur(12px); }
-.lightbox.open { display: flex; }
-.lightbox-inner { background: var(--card); border: 1px solid var(--border2); border-radius: 18px; overflow: hidden; width: 100%; max-width: 920px; max-height: 92vh; display: flex; flex-direction: column; animation: lbIn 0.3s ease; box-shadow: var(--shadow-lg); }
-@keyframes lbIn { from{opacity:0;transform:scale(0.95)} to{opacity:1;transform:scale(1)} }
-.lightbox-header { padding: 14px 18px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; background: var(--bg2); }
-.lightbox-title { font-weight: 700; font-size: 0.9rem; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 80%; font-family: 'Exo 2', sans-serif; }
-.lightbox-close { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border); background: none; cursor: pointer; font-size: 0.9rem; color: var(--text3); display: flex; align-items: center; justify-content: center; transition: all 0.18s; }
-.lightbox-close:hover { background: var(--bg3); color: var(--text); }
-.lightbox-body { flex: 1; overflow: hidden; min-height: 0; }
-.lightbox-body iframe { width: 100%; height: 100%; min-height: 520px; border: none; display: block; }
+
 
 /* ─── EMPTY / TOAST ─── */
 .empty-state { text-align: center; padding: 55px 20px; color: var(--text3); }
@@ -229,8 +219,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
   .stat-card-value { font-size: 1.6rem; }
   .recent-grid { grid-template-columns: 1fr; gap: 10px; }
   .cards-grid { grid-template-columns: 1fr; gap: 14px; }
-  .lightbox-inner { width: 100%; height: 100%; border-radius: 0; margin: 0; }
-  .lightbox-body iframe { min-height: 240px; }
   .filter-tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; }
   .filter-tab { white-space: nowrap; flex-shrink: 0; }
 }
@@ -316,17 +304,6 @@ body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-ser
 </div>
 </div>
 
-<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLb()">
-  <div class="lightbox-inner">
-    <div class="lightbox-header">
-      <span class="lightbox-title" id="lbTitle"></span>
-      <button class="lightbox-close" onclick="closeLb()">✕</button>
-    </div>
-    <div class="lightbox-body">
-      <iframe id="lbFrame" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-    </div>
-  </div>
-</div>
 
 <div class="toast" id="toast"></div>
 
@@ -384,6 +361,17 @@ let data = {
       descripcion: "Programa oficial de la materia Problemática Filosófica para el ciclo lectivo 2026."
     },
     {
+      id: 4,
+      materia: "General",
+      titulo: "Plan de Estudios — Profesorado y Licenciatura en Ciencias de la Educación",
+      pdf: "https://drive.google.com/file/d/1JOxCNR4uW2X8cU7MU-oyScErVBoH7nhX/view?usp=sharing",
+      pdfDescarga: "https://drive.google.com/uc?export=download&id=1JOxCNR4uW2X8cU7MU-oyScErVBoH7nhX",
+      fecha: "2026-03-14",
+      fuente: "14 de marzo de 2026",
+      subcategoria: "Programas",
+      descripcion: "Plan de estudios oficial del Profesorado y Licenciatura en Ciencias de la Educación — FHyCS, UNJu."
+    },
+    {
       id: 3,
       materia: "General",
       titulo: "Mesa Virtual de Consultas — Tutorías Ciencias de la Educación",
@@ -404,13 +392,7 @@ let data = {
 
 function getYTId(url){if(!url)return null;const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);return m?m[1]:null;}
 function ytThumb(id){return'https://img.youtube.com/vi/'+id+'/hqdefault.jpg';}
-function ytEmbed(id){return'https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0';}
-function docsEmbed(url){if(!url)return null;if(url.includes('/preview'))return url;return url.replace(/\/edit.*$/,'').replace(/\/view.*$/,'')+'/preview';}
 
-const lb={el:null,title:null,frame:null};
-function lbInit(){lb.el=document.getElementById('lightbox');lb.title=document.getElementById('lbTitle');lb.frame=document.getElementById('lbFrame');}
-function openLb(title,url){lb.title.textContent=title;lb.frame.src=url;lb.el.classList.add('open');}
-function closeLb(){lb.el.classList.remove('open');lb.frame.src='';}
 
 function showView(name,btn){
   document.querySelectorAll('.view,.nav-link').forEach(el=>el.classList.remove('active'));
@@ -458,12 +440,12 @@ function renderClases(filter='Todas'){
   const items=filterSort(data.clases,filter);
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">▶</div><h3>Sin clases aún</h3><p>Editá el index.html para agregar clases.</p></div>';return;}
   grid.innerHTML=items.map(c=>{
-    const id=getYTId(c.url),thumb=id?ytThumb(id):'',embed=id?ytEmbed(id):c.url,click=embed?`openLb('${esc(c.titulo)}','${embed}')`:'' ;
+    const id=getYTId(c.url),thumb=id?ytThumb(id):'';
     return`<div class="clase-card" id="clase-${c.id}">
-      <div class="yt-thumb" ${click?`onclick="${click}"`:''} style="${!click?'cursor:default':''}">
+      <a class="yt-thumb" href="${c.url}" target="_blank" rel="noopener" style="${!c.url?'cursor:default':''}">
         ${thumb?`<img src="${thumb}" alt="${escA(c.titulo)}" loading="lazy">`:`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.15);font-size:0.78rem">Sin previsualización</div>`}
-        ${click?`<div class="yt-play-overlay"><div class="yt-play-btn">▶</div></div>`:''}
-      </div>
+        ${c.url?`<div class="yt-play-overlay"><div class="yt-play-btn">▶</div></div>`:''}
+      </a>
       <div class="clase-card-body">
         <div class="card-materia">${c.materia}</div>
         <div class="card-title">${c.titulo}</div>
@@ -471,8 +453,7 @@ function renderClases(filter='Todas'){
         <div class="card-footer">
           <span class="card-date">${fDate(c.fecha)}${c.duracion?' · '+c.duracion:''}</span>
           <div style="display:flex;gap:6px">
-            ${click?`<button class="btn-yt" onclick="${click}">▶ Ver</button>`:''}
-            ${c.url?`<a class="btn-outline" href="${c.url}" target="_blank" rel="noopener">↗ YT</a>`:''}
+            ${c.url?`<a class="btn-yt" href="${c.url}" target="_blank" rel="noopener">▶ Ver en YouTube</a>`:''}
             ${c.resumenId?`<button class="btn-docs" onclick="goToResumen(${c.resumenId})">📝 Resumen</button>`:''}
           </div>
         </div>
@@ -486,7 +467,6 @@ function renderApuntes(filter='Todas'){
   const items=filterSort(data.apuntes,filter);
   if(!items.length){grid.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">📝</div><h3>Sin apuntes aún</h3><p>Editá el index.html para agregar apuntes.</p></div>';return;}
   grid.innerHTML=items.map(a=>{
-    const embed=a.url?docsEmbed(a.url):null;
     return`<div class="apunte-card" id="apunte-${a.id}">
       <div class="apunte-card-top"><div class="apunte-lines"></div><div class="apunte-preview">${a.descripcion||'Apunte de '+a.materia}</div></div>
       <div class="apunte-card-body">
@@ -499,9 +479,7 @@ function renderApuntes(filter='Todas'){
         <div class="card-footer">
           <span class="card-date">${fDate(a.fecha)}</span>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            ${embed?`<button class="btn-docs" onclick="openLb('${esc(a.titulo)}','${embed}')">👁 Ver doc</button>`:''}
-            ${a.pdf?`<a class="btn-docs" href="${a.pdf}" target="_blank" rel="noopener" style="text-decoration:none">📄 Ver PDF</a>`:''}
-            ${a.url?`<a class="btn-outline" href="${a.url}" target="_blank" rel="noopener">↗ Abrir</a>`:''}
+            ${a.pdf?`<a class="btn-docs" href="${a.pdf}" target="_blank" rel="noopener" style="text-decoration:none">📄 Ver PDF</a>`:a.url?`<a class="btn-docs" href="${a.url}" target="_blank" rel="noopener" style="text-decoration:none">📄 Ver doc</a>`:''}
             ${a.pdfDescarga?`<a class="btn-outline" href="${a.pdfDescarga}" target="_blank" rel="noopener">⬇ Descargar</a>`:''}
             ${a.fotos?`<a class="btn-fotos" href="${a.fotos}" target="_blank" rel="noopener">📷 Ver fotos</a>`:''}
             ${a.claseId?`<button class="btn-yt" onclick="goToClase(${a.claseId})">▶ Ver clase</button>`:''}
@@ -519,7 +497,6 @@ function renderTrabajos(filter='Todas'){
   const sm={entregado:'ts-entregado',pendiente:'ts-pendiente',en_proceso:'ts-proceso'};
   const sl={entregado:'✓ Entregado',pendiente:'⏳ Pendiente',en_proceso:'✏ En proceso'};
   grid.innerHTML=items.map(t=>{
-    const embed=t.url?docsEmbed(t.url):null;
     const nc=t.nota>=9?'nota-hi':t.nota?'nota-mid':'nota-nd';
     return`<div class="trabajo-card">
       <span class="trabajo-status ${sm[t.estado]||'ts-pendiente'}">${sl[t.estado]||'Pendiente'}</span>
@@ -530,10 +507,7 @@ function renderTrabajos(filter='Todas'){
         <div class="nota-circle ${nc}">${t.nota||'—'}</div>
         <div class="nota-info"><strong>${t.nota?'Nota: '+t.nota+'/10':'Sin calificación'}</strong>${fDate(t.fecha)}</div>
       </div>
-      <div style="display:flex;gap:7px;margin-top:11px">
-        ${embed?`<button class="btn-purple" onclick="openLb('${esc(t.titulo)}','${embed}')">👁 Ver doc</button>`:''}
-        ${t.url?`<a class="btn-outline" href="${t.url}" target="_blank" rel="noopener">↗ Abrir</a>`:''}
-      </div>
+      ${t.url?`<div style="display:flex;gap:7px;margin-top:11px"><a class="btn-purple" href="${t.url}" target="_blank" rel="noopener" style="text-decoration:none">📄 Ver doc</a></div>`:''}
     </div>`;
   }).join('');
 }
@@ -550,7 +524,6 @@ function filterCards(s,v,btn){
   ({clases:renderClases,apuntes:renderApuntes,trabajos:renderTrabajos})[s](v);
 }
 function fDate(s){if(!s)return'';return new Date(s+'T00:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'short',year:'numeric'});}
-function esc(s){return(s||'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
 function escA(s){return(s||'').replace(/"/g,'&quot;');}
 
 document.getElementById('searchInput').addEventListener('input', function() {
@@ -570,19 +543,36 @@ document.getElementById('searchInput').addEventListener('input', function() {
   if(!total){grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="empty-state-icon">🔍</div><h3>Sin resultados</h3><p>No encontramos nada para "<strong>${this.value.trim()}</strong>".</p></div>`;return;}
   const lbl={clases:'Clase',apuntes:'Apunte',trabajos:'Trabajo'};
   const all=[...clases.map(i=>({...i,tipo:'clases'})),...apuntes.map(i=>({...i,tipo:'apuntes'})),...trabajos.map(i=>({...i,tipo:'trabajos'}))];
-  grid.innerHTML=all.map(item=>`<div class="content-card ${item.tipo}" onclick="goToSection('${item.tipo}')"><span class="card-type-badge badge-${item.tipo}">${lbl[item.tipo]}</span><div class="card-materia" style="font-size:0.7rem;margin-bottom:4px">${item.materia}</div><div class="card-title">${item.titulo}</div>${item.descripcion?`<div class="card-desc" style="font-size:0.76rem;color:var(--text2);margin-top:4px">${item.descripcion}</div>`:''}<div class="card-date" style="font-size:0.68rem;color:var(--text3);margin-top:8px">${fDate(item.fecha)}</div><div class="card-goto">→ Ver sección</div></div>`).join('');
+  grid.innerHTML=all.map(item=>`<div class="content-card ${item.tipo}" onclick="goToItem('${item.tipo}',${item.id})"><span class="card-type-badge badge-${item.tipo}">${lbl[item.tipo]}</span><div class="card-materia" style="font-size:0.7rem;margin-bottom:4px">${item.materia}</div><div class="card-title">${item.titulo}</div>${item.descripcion?`<div class="card-desc" style="font-size:0.76rem;color:var(--text2);margin-top:4px">${item.descripcion}</div>`:''}<div class="card-date" style="font-size:0.68rem;color:var(--text3);margin-top:8px">${fDate(item.fecha)}</div><div class="card-goto">→ Ir al elemento ✦</div></div>`).join('');
   document.getElementById('topbarTitle').textContent='Búsqueda';
 });
 
 function goToSection(tipo){
-  document.querySelectorAll('.nav-link').forEach(btn=>{
-    if((btn.getAttribute('onclick')||'').includes("'"+tipo+"'"))showView(tipo,btn);
-  });
+  const btn=document.querySelector(`.nav-link[onclick*="'${tipo}'"]`);
+  if(btn)showView(tipo,btn);
   window.scrollTo({top:0,behavior:'smooth'});
 }
+function goToItem(tipo,id){
+  const colors={clases:'239,83,80',apuntes:'38,198,218',trabajos:'66,165,245'};
+  const btn=document.querySelector(`.nav-link[onclick*="'${tipo}'"]`);
+  if(btn)showView(tipo,btn);
+  setTimeout(()=>{
+    const prefix={clases:'clase',apuntes:'apunte',trabajos:'trabajo'}[tipo];
+    const el=document.getElementById(prefix+'-'+id);
+    if(el){
+      el.scrollIntoView({behavior:'smooth',block:'center'});
+      const c=colors[tipo]||'25,118,210';
+      el.style.transition='box-shadow 0.3s, outline 0.3s';
+      el.style.outline='2.5px solid rgba('+c+',0.9)';
+      el.style.boxShadow='0 0 0 6px rgba('+c+',0.18), 0 8px 32px rgba('+c+',0.22)';
+      setTimeout(()=>{el.style.outline='';el.style.boxShadow='';},2500);
+    }
+  },180);
+}
 
-lbInit();
 renderAll();
 </script>
+
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fb40ac6c82604eaf82de9e6b02a419ce"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
