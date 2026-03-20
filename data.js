@@ -66,12 +66,12 @@ const data = {
     },
     {
       id: 5,
-      materia: "Problemática Filosófica",
+      materia: "Pensamiento Científico",
       titulo: "Resumen — Clase Teórica 1. Pensamiento Científico",
       url: "https://docs.google.com/document/d/15k_U7mpecZE8nUPArQ4IS0YI4U8yJhFTqg3VWbIq7Xg/edit?usp=sharing",
       fecha: "2026-03-17",
       fuente: "Clase Teórica 1 — 17 de marzo de 2026",
-      descripcion: "Resumen de la primera clase teórica de Problemática Filosófica.",
+      descripcion: "Resumen de la primera clase teórica de Pensamiento Científico.",
       claseId: 2
     },
     {
