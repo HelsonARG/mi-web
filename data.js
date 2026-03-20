@@ -26,8 +26,18 @@ const data = {
       url: "https://www.youtube.com/watch?v=lMj2AnS6qDg",
       fecha: "2026-03-17",
       duracion: "",
-      descripcion: "Primera clase teórica de Problemática Filosófica.",
+      descripcion: "Primera clase teórica de la materia Pensamiento Científico.",
       resumenId: 5
+    },
+    {
+      id: 3,
+      materia: "Pensamiento Científico",
+      titulo: "Clase Práctica 1 — Pensamiento Científico",
+      url: "https://www.youtube.com/watch?v=sCCZKPy4JzQ",
+      fecha: "2026-03-19",
+      duracion: "",
+      descripcion: "Primera clase práctica de la materia Pensamiento Científico.",
+      resumenId: 6
     }
   ],
 
@@ -54,6 +64,16 @@ const data = {
       descripcion: "Programa oficial de la materia Problemática Filosófica para el ciclo lectivo 2026."
     },
     {
+      id: 3,
+      materia: "General",
+      titulo: "Mesa Virtual de Consultas — Tutorías Ciencias de la Educación",
+      url: "https://docs.google.com/document/d/1Fiq2upcYNYdpxO9f1_3ncPlZdSHrxqi_vAzX9F8bDcU/edit?usp=sharing",
+      fecha: "2026-03-16",
+      fuente: "Equipo de Tutorías FHyCS — 16 de marzo de 2026",
+      descripcion: "Resumen de la mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS.",
+      claseId: 1
+    },
+    {
       id: 4,
       materia: "General",
       titulo: "Plan de Estudios — Profesorado y Licenciatura en Ciencias de la Educación",
@@ -75,14 +95,14 @@ const data = {
       claseId: 2
     },
     {
-      id: 3,
-      materia: "General",
-      titulo: "Mesa Virtual de Consultas — Tutorías Ciencias de la Educación",
-      url: "https://docs.google.com/document/d/1Fiq2upcYNYdpxO9f1_3ncPlZdSHrxqi_vAzX9F8bDcU/edit?usp=sharing",
-      fecha: "2026-03-16",
-      fuente: "Equipo de Tutorías FHyCS — 16 de marzo de 2026",
-      descripcion: "Resumen de la mesa virtual de consultas del equipo de tutorías de Ciencias de la Educación, FHyCS.",
-      claseId: 1
+      id: 6,
+      materia: "Pensamiento Científico",
+      titulo: "Resumen — Clase Práctica 1. Pensamiento Científico",
+      url: "https://docs.google.com/document/d/1mWwDAe6eOP7HDRPz-LBqY3hY_U4SJR_mnk_bRQ21bLg/edit?usp=sharing",
+      fecha: "2026-03-19",
+      fuente: "Clase Práctica 1 — 19 de marzo de 2026",
+      descripcion: "Resumen de la primera clase práctica de Pensamiento Científico.",
+      claseId: 3
     }
   ],
 
