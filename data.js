@@ -38,6 +38,16 @@ const data = {
       duracion: "",
       descripcion: "Primera clase práctica de la materia Pensamiento Científico.",
       resumenId: 6
+    },
+    {
+      id: 4,
+      materia: "Problemática Filosófica",
+      titulo: "Clase Teórica 1 — Problemática Filosófica",
+      url: "https://youtu.be/oiEOtL68bec",
+      fecha: "2026-03-20",
+      duracion: "",
+      descripcion: "Primera clase teórica de la materia Problemática Filosófica.",
+      resumenId: 7
     }
   ],
 
@@ -103,6 +113,16 @@ const data = {
       fuente: "Clase Práctica 1 — 19 de marzo de 2026",
       descripcion: "Resumen de la primera clase práctica de Pensamiento Científico.",
       claseId: 3
+    },
+    {
+      id: 7,
+      materia: "Problemática Filosófica",
+      titulo: "Resumen — Clase Teórica 1. Problemática Filosófica",
+      url: "https://docs.google.com/document/d/1adj-EUbYRtjyHY_RU1_NjiQtL4FJxHhK7_IE6M8nyQA/edit?usp=sharing",
+      fecha: "2026-03-20",
+      fuente: "Clase Teórica 1 — 20 de marzo de 2026",
+      descripcion: "Resumen de la primera clase teórica de Problemática Filosófica.",
+      claseId: 4
     }
   ],
 
