@@ -58,6 +58,16 @@ const data = {
       duracion: "",
       descripcion: "Segunda clase teórica de la materia Problemática Filosófica.",
       resumenId: 8
+    },
+    {
+      id: 6,
+      materia: "Problemática Filosófica",
+      titulo: "Clase Práctica 1 — Problemática Filosófica",
+      url: "https://youtu.be/TRne6D2SF9w",
+      fecha: "2026-03-31",
+      duracion: "",
+      descripcion: "Primera clase práctica de la materia Problemática Filosófica.",
+      resumenId: 9
     }
   ],
 
@@ -143,6 +153,16 @@ const data = {
       fuente: "Clase Teórica 2 — 27 de marzo de 2026",
       descripcion: "Resumen de la segunda clase teórica de Problemática Filosófica.",
       claseId: 5
+    },
+    {
+      id: 9,
+      materia: "Problemática Filosófica",
+      titulo: "Resumen — Clase Práctica 1. Problemática Filosófica",
+      url: "https://docs.google.com/document/d/1NiMIUFKYIRRiJt9t1tyDE9M6_xaMH0IcSy7u7iAOaGs/edit?usp=sharing",
+      fecha: "2026-03-31",
+      fuente: "Clase Práctica 1 — 31 de marzo de 2026",
+      descripcion: "Resumen de la primera clase práctica de Problemática Filosófica.",
+      claseId: 6
     }
   ],
 
