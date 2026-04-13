@@ -68,6 +68,36 @@ const data = {
       duracion: "",
       descripcion: "Primera clase práctica de la materia Problemática Filosófica.",
       resumenId: 9
+    },
+    {
+      id: 7,
+      materia: "Problemática Educativa",
+      titulo: "Clase Teórica 1 — Problemática Educativa",
+      url: "https://youtu.be/qVJgfn88D0Q",
+      fecha: "2026-03-31",
+      duracion: "",
+      descripcion: "Primera clase teórica de la materia Problemática Educativa.",
+      resumenId: 10
+    },
+    {
+      id: 8,
+      materia: "Pensamiento Científico",
+      titulo: "Clase Práctica 2 — Pensamiento Científico",
+      url: "https://youtu.be/V-bHErqiwmU",
+      fecha: "2026-04-06",
+      duracion: "",
+      descripcion: "Segunda clase práctica de la materia Pensamiento Científico.",
+      resumenId: 11
+    },
+    {
+      id: 9,
+      materia: "Problemática Educativa",
+      titulo: "Clase Teórica 2 — Problemática Educativa",
+      url: "https://youtu.be/hoN3F0-euDg",
+      fecha: "2026-04-08",
+      duracion: "",
+      descripcion: "Segunda clase teórica de la materia Problemática Educativa.",
+      resumenId: 12
     }
   ],
 
@@ -163,6 +193,36 @@ const data = {
       fuente: "Clase Práctica 1 — 31 de marzo de 2026",
       descripcion: "Resumen de la primera clase práctica de Problemática Filosófica.",
       claseId: 6
+    },
+    {
+      id: 10,
+      materia: "Problemática Educativa",
+      titulo: "Resumen — Clase Teórica 1. Problemática Educativa",
+      url: "https://docs.google.com/document/d/1xFnIIFbh3_rsTG_4sBP13haWWrNwmv31A5vekwfjP6E/edit?usp=sharing",
+      fecha: "2026-03-31",
+      fuente: "Clase Teórica 1 — 31 de marzo de 2026",
+      descripcion: "Resumen de la primera clase teórica de Problemática Educativa.",
+      claseId: 7
+    },
+    {
+      id: 11,
+      materia: "Pensamiento Científico",
+      titulo: "Resumen — Clase Práctica 2. Pensamiento Científico",
+      url: "https://docs.google.com/document/d/1zXcy57NlEkXI_oWEAt70e8oRhMDzOQ5aYcHE54vEAPg/edit?usp=sharing",
+      fecha: "2026-04-06",
+      fuente: "Clase Práctica 2 — 6 de abril de 2026",
+      descripcion: "Resumen de la segunda clase práctica de Pensamiento Científico.",
+      claseId: 8
+    },
+    {
+      id: 12,
+      materia: "Problemática Educativa",
+      titulo: "Resumen — Clase Teórica 2. Problemática Educativa",
+      url: "https://docs.google.com/document/d/1wN2oz6xwQQ_1LqP2qEss1NvEx59TIYC2UFdpk6onU44/edit?usp=sharing",
+      fecha: "2026-04-08",
+      fuente: "Clase Teórica 2 — 8 de abril de 2026",
+      descripcion: "Resumen de la segunda clase teórica de Problemática Educativa.",
+      claseId: 9
     }
   ],
 
